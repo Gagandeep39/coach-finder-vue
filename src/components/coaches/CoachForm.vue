@@ -8,6 +8,9 @@
         v-model.trim="firstName.value"
         @blur="clearValidity('firstName')"
       />
+      <p v-if="!firstName.isValid" style="color: red">
+        Required*
+      </p>
     </div>
     <div class="form-control" :class="{ invalid: !lastName.isValid }">
       <label for="lastName">Last name</label>
@@ -17,6 +20,9 @@
         v-model.trim="lastName.value"
         @blur="clearValidity('lastName')"
       />
+      <p v-if="!lastName.isValid" style="color: red">
+        Required*
+      </p>
     </div>
     <div class="form-control" :class="{ invalid: !description.isValid }">
       <label for="description">Description</label>
@@ -26,6 +32,9 @@
         v-model.trim="description.value"
         @blur="clearValidity('description')"
       />
+      <p v-if="!description.isValid" style="color: red">
+        Required*
+      </p>
     </div>
     <div class="form-control" :class="{ invalid: !hourlyRate.isValid }">
       <label for="hourlyRate">Rate</label>
@@ -35,6 +44,9 @@
         v-model.number="hourlyRate.value"
         @blur="clearValidity('hourlyRate')"
       />
+      <p v-if="!hourlyRate.isValid" style="color: red">
+        Value must be greater than 0
+      </p>
     </div>
     <div class="form-control" :class="{ invalid: !areas.isValid }">
       <h3>Areas of Expertise</h3>
@@ -68,6 +80,9 @@
         />
         <label for="career">Career Development</label>
       </div>
+      <p v-if="!areas.isValid" style="color: red">
+        Select atleast 1 area
+      </p>
     </div>
     <p v-if="!formIsValid" style="color: red">
       Please fix all errors and submit again!
