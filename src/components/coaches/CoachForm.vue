@@ -53,6 +53,7 @@
 <script>
 import BaseButton from '../../components/ui/BaseButton.vue';
 export default {
+  emits: ['save-data'],
   components: { BaseButton },
   data() {
     return {
@@ -72,7 +73,7 @@ export default {
         description: this.description,
         areas: this.areas,
       };
-      console.log(formData);
+      this.$emit('save-data', formData);
     },
   },
 };
