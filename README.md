@@ -5,6 +5,8 @@
   - [Local Deployment](#local-deployment)
   - [Description](#description)
   - [Features](#features)
+  - [Technical Specs](#technical-specs)
+    - [Routes](#routes)
 
 ## Deployment
 
@@ -27,3 +29,15 @@
 
 - routing `vue-router`
 - State management `vuex`
+
+## Technical Specs
+
+### Routes
+
+| Route        | Description                |
+| ------------ | -------------------------- |
+| /coaches     | Coach List                 |
+| /coaches/:id | Coach details              |
+| /register    | Coach registration         |
+| /contact     | Coach coach                |
+| /requests    | Recieved coaching requests |
