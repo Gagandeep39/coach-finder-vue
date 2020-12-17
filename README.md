@@ -1,29 +1,29 @@
-# coach-finder-vue
+# Coach Finder Mini Project
 
-## Project setup
+- [Coach Finder Mini Project](#coach-finder-mini-project)
+  - [Deployment](#deployment)
+  - [Local Deployment](#local-deployment)
+  - [Description](#description)
+  - [Features](#features)
 
-```
-yarn install
-```
+## Deployment
 
-### Compiles and hot-reloads for development
+- Check deployment at <https://gagandeep39.github.io/coach-finder-vue/>
 
-```
-yarn serve
-```
+## Local Deployment
 
-### Compiles and minifies for production
+1. One the project in VS code
+2. Install dependencies `yarn`
+3. Run project `yarn serve`
 
-```
-yarn build
-```
+## Description
 
-### Lints and fixes files
+- A person can search for coach in the application
+- View the subjects taught and price of coaches
+- Send a coaching request
+- Coach can view and accept these requsts
 
-```
-yarn lint
-```
+## Features
 
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- routing `vue-router`
+- State management `vuex`
