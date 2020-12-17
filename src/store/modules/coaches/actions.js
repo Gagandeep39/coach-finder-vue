@@ -2,7 +2,7 @@ export default {
   registerCoach(context, payload) {
     const coachData = {
       ...payload,
-      id: new Date().toISOString(),
+      id: context.rootGetters.userId,
     };
     context.commit('registerCoach', coachData);
   },
