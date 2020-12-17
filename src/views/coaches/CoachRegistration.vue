@@ -1,9 +1,16 @@
 <template>
-  <div></div>
+  <section>
+    <base-card
+      ><h2>Register as Coach</h2>
+      <coach-form
+    /></base-card>
+  </section>
 </template>
-
 <script>
-export default {};
+import CoachForm from '../../components/coaches/CoachForm.vue';
+import BaseCard from '../../components/ui/BaseCard.vue';
+export default {
+  components: { CoachForm, BaseCard },
+};
 </script>
-
-<style></style>
+<style scoped></style>
