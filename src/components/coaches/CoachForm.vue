@@ -1,29 +1,50 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control">
+    <div class="form-control" :class="{ invalid: !firstName.isValid }">
       <label for="firstName">First name</label>
-      <input type="text" id="firstName" v-model.trim="firstName" />
+      <input
+        type="text"
+        id="firstName"
+        v-model.trim="firstName.value"
+        @blur="clearValidity('firstName')"
+      />
     </div>
-    <div class="form-control">
+    <div class="form-control" :class="{ invalid: !lastName.isValid }">
       <label for="lastName">Last name</label>
-      <input type="text" id="lastName" v-model.trim="lastName" />
+      <input
+        type="text"
+        id="lastName"
+        v-model.trim="lastName.value"
+        @blur="clearValidity('lastName')"
+      />
     </div>
-    <div class="form-control">
+    <div class="form-control" :class="{ invalid: !description.isValid }">
       <label for="description">Description</label>
-      <textarea rows="5" id="description" v-model.trim="description" />
+      <textarea
+        rows="5"
+        id="description"
+        v-model.trim="description.value"
+        @blur="clearValidity('description')"
+      />
     </div>
-    <div class="form-control">
+    <div class="form-control" :class="{ invalid: !hourlyRate.isValid }">
       <label for="hourlyRate">Rate</label>
-      <input type="number" id="hourlyRate" v-model.number="hourlyRate" />
+      <input
+        type="number"
+        id="hourlyRate"
+        v-model.number="hourlyRate.value"
+        @blur="clearValidity('hourlyRate')"
+      />
     </div>
-    <div class="form-control">
+    <div class="form-control" :class="{ invalid: !areas.isValid }">
       <h3>Areas of Expertise</h3>
       <div>
         <input
           type="checkbox"
           id="frontend"
           value="frontend"
-          v-model.trim="areas"
+          v-model.trim="areas.value"
+          @blur="clearValidity('areas')"
         />
         <label for="frontend">Frontend Development</label>
       </div>
@@ -32,7 +53,8 @@
           type="checkbox"
           id="backend"
           value="backend"
-          v-model.trim="areas"
+          v-model.trim="areas.value"
+          @blur="clearValidity('areas')"
         />
         <label for="backend">Backend Development</label>
       </div>
@@ -41,11 +63,15 @@
           type="checkbox"
           id="career"
           value="career"
-          v-model.trim="areas"
+          v-model.trim="areas.value"
+          @blur="clearValidity('areas')"
         />
         <label for="career">Career Development</label>
       </div>
     </div>
+    <p v-if="!formIsValid" style="color: red">
+      Please fix all errors and submit again!
+    </p>
     <base-button> Submit Button </base-button>
   </form>
 </template>
@@ -57,23 +83,67 @@ export default {
   components: { BaseButton },
   data() {
     return {
-      firstName: '',
-      lastName: '',
-      hourlyRate: null,
-      description: '',
-      areas: [],
+      firstName: {
+        value: '',
+        isValid: true,
+      },
+      lastName: {
+        value: '',
+        isValid: true,
+      },
+      hourlyRate: {
+        value: null,
+        isValid: true,
+      },
+      description: {
+        value: '',
+        isValid: true,
+      },
+      areas: {
+        value: [],
+        isValid: true,
+      },
+      formIsValid: true,
     };
   },
   methods: {
     submitForm() {
+      this.validateForm();
+      if (!this.formIsValid) return;
       const formData = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        hourlyRate: this.hourlyRate,
-        description: this.description,
-        areas: this.areas,
+        firstName: this.firstName.value,
+        lastName: this.lastName.value,
+        hourlyRate: this.hourlyRate.value,
+        description: this.description.value,
+        areas: this.areas.value,
       };
       this.$emit('save-data', formData);
+    },
+    validateForm() {
+      this.formIsValid = true;
+      if (this.firstName.value === '') {
+        this.firstName.isValid = false;
+        this.formIsValid = false;
+      }
+      if (this.lastName.value === '') {
+        this.lastName.isValid = false;
+        this.formIsValid = false;
+      }
+      if (this.description.value === '') {
+        this.description.isValid = false;
+        this.formIsValid = false;
+      }
+      if (!this.hourlyRate.value || this.hourlyRate.value < 0) {
+        this.hourlyRate.isValid = false;
+        this.formIsValid = false;
+      }
+      if (this.areas.value.length === 0) {
+        this.areas.isValid = false;
+        this.formIsValid = false;
+      }
+    },
+    clearValidity(input) {
+      this[input].isValid = true;
     },
   },
 };
