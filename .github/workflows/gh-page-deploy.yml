@@ -21,6 +21,8 @@ jobs:
         run: |
           yarn
           yarn build
+        env:
+          VUE_APP_URL: ${{ secrets.VUE_APP_URL }}
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v2
         env:
