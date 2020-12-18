@@ -3,7 +3,12 @@
     <base-card>
       <header><h2>Requests Recieved</h2></header>
       <ul v-if="hasRequests">
-        <li v-for="request in requests" :key="request">cvf</li>
+        <request-item
+          v-for="request in requests"
+          :key="request"
+          :message="request.message"
+          :email="request.email"
+        />
       </ul>
       <h3 v-else>No Requests have been recieved</h3>
     </base-card>
@@ -13,15 +18,17 @@
 <script>
 import BaseCard from '../../components/ui/BaseCard.vue';
 import { mapGetters } from 'vuex';
+import RequestItem from '../../components/requests/RequestItem.vue';
+
 export default {
-  components: { BaseCard },
+  components: { BaseCard, RequestItem },
   computed: {
     ...mapGetters('requests', ['hasRequests', 'requests']),
   },
 };
 </script>
 
-<style>
+<style scoped>
 header {
   text-align: center;
 }
