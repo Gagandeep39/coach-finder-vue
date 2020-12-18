@@ -21,8 +21,9 @@ export default {
   },
   async fetchRequests(context) {
     const coachId = context.rootGetters.userId;
+    const token = context.rootGetters.token;
     const res = await axios
-      .get(`${process.env.VUE_APP_URL}/requests/${coachId}.json`)
+      .get(`${process.env.VUE_APP_URL}/requests/${coachId}.json?auth=${token}`)
       .catch((error) => {
         throw new Error(error.message || 'Failed to fetch');
       });
