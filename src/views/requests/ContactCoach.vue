@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     submitForm() {
-      this.formIsValid = false;
+      // this.formIsValid = false;
       if (this.email === '' || !this.email.includes('@') || this.message === '')
         return;
       this.$store.dispatch('requests/contactCoach', {
