@@ -7,6 +7,7 @@
   - [Features](#features)
   - [Technical Specs](#technical-specs)
     - [Routes](#routes)
+  - [Environment](#environment)
 
 ## Deployment
 
@@ -41,3 +42,8 @@
 | /register    | Coach registration         |
 | /contact     | Coach coach                |
 | /requests    | Recieved coaching requests |
+
+## Environment
+
+- All routes manually append `.json` in application
+- Add URL without `.json` in Environment variable
