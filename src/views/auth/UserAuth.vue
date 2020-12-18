@@ -68,7 +68,8 @@ export default {
         } else {
           await this.$store.dispatch('signup', authPayload);
         }
-        this.$router.replace('/coaches');
+        const redirectUrl = '/' + (this.$route.query.redirect || 'coaches');
+        this.$router.replace(redirectUrl);
       } catch (error) {
         this.error = error.message || 'Something went wrong';
       }
