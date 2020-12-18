@@ -58,15 +58,15 @@ export default {
         return;
       }
       this.isLoading = true;
-
+      const authPayload = {
+        email: this.email,
+        password: this.password,
+      };
       try {
         if (this.formMode === 'login') {
-          //..
+          await this.$store.dispatch('login', authPayload);
         } else {
-          await this.$store.dispatch('signup', {
-            email: this.email,
-            password: this.password,
-          });
+          await this.$store.dispatch('signup', authPayload);
         }
       } catch (error) {
         this.error = error.message || 'Something went wrong';
