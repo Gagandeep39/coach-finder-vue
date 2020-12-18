@@ -17,23 +17,24 @@ export default {
   },
   async loadCoaches(context) {
     const coaches = [];
-    const res = await axios.get(`${process.env.VUE_APP_URL}.json`);
-    if (!res.status === 200) {
-      // error
-    } else {
-      const resData = res.data;
-      for (const key in resData) {
-        const coach = {
-          firstName: resData[key].firstName,
-          lastName: resData[key].lastName,
-          description: resData[key].description,
-          hourlyRate: resData[key].hourlyRate,
-          areas: resData[key].areas,
-          id: key,
-        };
-        coaches.push(coach);
-      }
-      context.commit('setCoaches', coaches);
+    const res = await axios
+      .get(`${process.env.VUE_APP_URL}.jsons`)
+      .catch((error) => {
+        throw new Error(error.message || 'Failed to fetch');
+      });
+
+    const resData = res.data;
+    for (const key in resData) {
+      const coach = {
+        firstName: resData[key].firstName,
+        lastName: resData[key].lastName,
+        description: resData[key].description,
+        hourlyRate: resData[key].hourlyRate,
+        areas: resData[key].areas,
+        id: key,
+      };
+      coaches.push(coach);
     }
+    context.commit('setCoaches', coaches);
   },
 };
