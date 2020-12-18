@@ -19,4 +19,25 @@ export default {
     newRequest.id = res.data.name;
     context.commit('addRequest', newRequest);
   },
+  async fetchRequests(context) {
+    const coachId = context.rootGetters.userId;
+    const res = await axios
+      .get(`${process.env.VUE_APP_URL}/requests/${coachId}.json`)
+      .catch((error) => {
+        throw new Error(error.message || 'Failed to fetch');
+      });
+
+    const requests = [];
+    const resData = res.data;
+    for (const key in resData) {
+      const request = {
+        id: key,
+        coachId,
+        email: resData[key].email,
+        message: resData[key].message,
+      };
+      requests.push(request);
+    }
+    context.commit('setRequests', requests);
+  },
 };
