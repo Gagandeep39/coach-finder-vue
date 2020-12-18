@@ -1,4 +1,7 @@
 <template>
+  <base-dialog :show="!!error" @close="closeDialog">
+    <p>{{ error }}</p>
+  </base-dialog>
   <section>
     <coach-filter @change-filter="setFilter" />
   </section>
@@ -34,10 +37,18 @@ import CoachFilter from '../../components/coaches/CoachFilter.vue';
 import CoachItem from '../../components/coaches/CoachItem.vue';
 import BaseButton from '../../components/ui/BaseButton.vue';
 import BaseCard from '../../components/ui/BaseCard.vue';
+import BaseDialog from '../../components/ui/BaseDialog.vue';
 import BaseSpinner from '../../components/ui/BaseSpinner.vue';
 
 export default {
-  components: { CoachItem, BaseCard, BaseButton, CoachFilter, BaseSpinner },
+  components: {
+    CoachItem,
+    BaseCard,
+    BaseButton,
+    CoachFilter,
+    BaseSpinner,
+    BaseDialog,
+  },
   computed: {
     filteredCoaches() {
       const coaches = this.$store.getters['coaches/coaches'];
@@ -70,6 +81,9 @@ export default {
         this.error = error.message || 'Something went wrong';
       }
       this.isLoading = false;
+    },
+    closeDialog() {
+      this.error = null;
     },
   },
   data() {
