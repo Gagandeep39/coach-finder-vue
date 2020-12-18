@@ -34,10 +34,26 @@ export default {
         console.log(error);
         throw new Error(error.message || 'Failed to Authenticate');
       });
+
+    // Persist to local storage
+    localStorage.setItem('token', res.data.idToken);
+    localStorage.setItem('userId', res.data.localId);
     context.commit('setUser', {
       token: res.data.idToken,
       userId: res.data.localId,
       tokenExpiration: res.data.expiresIn,
     });
+  },
+
+  tryLogin(context) {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    if (token && userId) {
+      context.commit('setUser', {
+        token,
+        userId,
+        tokenExpiration: null,
+      });
+    }
   },
 };
