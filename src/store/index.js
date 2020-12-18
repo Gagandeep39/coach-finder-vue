@@ -5,17 +5,11 @@ import authModule from './modules/auth';
 
 export default createStore({
   state() {
-    return {
-      userId: 'dummy',
-    };
+    return {};
   },
   mutations: {},
   actions: {},
-  getters: {
-    userId(state) {
-      return state.userId;
-    },
-  },
+  getters: {},
   modules: {
     requests: requestsModule,
     coaches: coachModule,
