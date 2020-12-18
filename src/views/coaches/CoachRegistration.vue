@@ -1,20 +1,22 @@
 <template>
-  <base-dialog :show="!!error" @close="closeDialog">
-    <p>{{ error }}</p>
-  </base-dialog>
-  <section>
-    <base-card>
-      <keep-alive>
-        <div v-if="isLoading">
-          <base-spinner />
-        </div>
-        <div v-else>
-          <h2>Register as Coach</h2>
-          <coach-form @save-data="saveData" />
-        </div>
-      </keep-alive>
-    </base-card>
-  </section>
+  <div>
+    <base-dialog :show="!!error" @close="closeDialog">
+      <p>{{ error }}</p>
+    </base-dialog>
+    <section>
+      <base-card>
+        <keep-alive>
+          <div v-if="isLoading">
+            <base-spinner />
+          </div>
+          <div v-else>
+            <h2>Register as Coach</h2>
+            <coach-form @save-data="saveData" />
+          </div>
+        </keep-alive>
+      </base-card>
+    </section>
+  </div>
 </template>
 <script>
 import CoachForm from '../../components/coaches/CoachForm.vue';
