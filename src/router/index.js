@@ -4,6 +4,7 @@ import CoachDetails from '../views/coaches/CoachDetails';
 import CoachRegistration from '../views/coaches/CoachRegistration';
 import ContactCoach from '../views/requests/ContactCoach';
 import RequestRecieved from '../views/requests/RequestRecieved';
+import UserAuth from '../views/auth/UserAuth';
 import NotFound from '../views/NotFound';
 
 const routes = [
@@ -17,6 +18,7 @@ const routes = [
   },
   { path: '/register', component: CoachRegistration },
   { path: '/requests', component: RequestRecieved },
+  { path: '/auth', component: UserAuth },
   // (.*) - Any value will direct to this route
   // :notFound - Used to fetch the entered path
   { path: '/:notFound(.*)', component: NotFound },
