@@ -55,7 +55,7 @@ export default {
 
     // Logout on expiration
     timer = setTimeout(() => {
-      context.dispatch('logout');
+      context.dispatch('autoLogout');
     }, expiresIn);
   },
 
@@ -69,7 +69,7 @@ export default {
     // If token expired then dont login
     if (expiresIn < 0) return;
     timer = setTimeout(() => {
-      context.dispatch('logout');
+      context.dispatch('autoLogout');
     }, expiresIn);
 
     if (token && userId) {
@@ -78,5 +78,10 @@ export default {
         userId,
       });
     }
+  },
+
+  autoLogout(context) {
+    context.dispatch('logout');
+    context.dispatch('setAutoLogout');
   },
 };
