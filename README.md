@@ -89,6 +89,6 @@
 
 ```
 VUE_APP_URL=
-VUE_APP_FIREBASE_AUTH_URL=https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=
+VUE_APP_FIREBASE_AUTH_URL=https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=
 VUE_APP_FIREBASE_API_KEY=
 ```
