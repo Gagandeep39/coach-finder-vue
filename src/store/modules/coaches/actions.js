@@ -15,6 +15,7 @@ export default {
     context.commit('registerCoach', { ...coachData, id: userId });
   },
   async loadCoaches(context) {
+    if (!context.getters.shouldUpdate) return;
     const coaches = [];
     const res = await axios
       .get(`${process.env.VUE_APP_URL}/coaches.json`)
@@ -35,5 +36,6 @@ export default {
       coaches.push(coach);
     }
     context.commit('setCoaches', coaches);
+    context.commit('setFetchTimeStamp');
   },
 };
