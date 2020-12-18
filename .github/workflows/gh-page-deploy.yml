@@ -24,6 +24,7 @@ jobs:
         env:
           VUE_APP_URL: ${{ secrets.VUE_APP_URL }}
           VUE_APP_FIREBASE_SIGN_UP_URL: ${{ secrets.VUE_APP_FIREBASE_SIGN_UP_URL }}
+          VUE_APP_FIREBASE_SIGN_IN_URL: ${{ secrets.VUE_APP_FIREBASE_SIGN_IN_URL }}
           VUE_APP_FIREBASE_API_KEY: ${{ secrets.VUE_APP_FIREBASE_API_KEY }}
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v2
