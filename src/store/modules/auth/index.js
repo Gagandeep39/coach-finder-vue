@@ -5,7 +5,11 @@ import getters from './getters';
 // Global - Because no same space
 export default {
   state() {
-    return {};
+    return {
+      token: null,
+      userId: null,
+      tokenExpiration: null,
+    };
   },
   mutations,
   actions,
