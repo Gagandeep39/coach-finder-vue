@@ -10,6 +10,8 @@
   - [Environment](#environment)
   - [Authentication in SPA](#authentication-in-spa)
   - [Firebase rules](#firebase-rules)
+  - [Firebase authentication](#firebase-authentication)
+  - [Environment Variables to run this app](#environment-variables-to-run-this-app)
 
 ## Deployment
 
@@ -76,4 +78,17 @@
     // ".write": true,
   }
 }
+```
+
+## Firebase authentication
+
+- Refer [docs](https://firebase.google.com/docs/reference/rest/auth)
+- API key can be found at Firebase console -> Settings -> Project settings -> General -> Web API Key
+
+## Environment Variables to run this app
+
+```
+VUE_APP_URL=
+VUE_APP_FIREBASE_AUTH_URL=https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=
+VUE_APP_FIREBASE_API_KEY=
 ```
