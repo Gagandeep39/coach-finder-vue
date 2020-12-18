@@ -23,6 +23,8 @@ jobs:
           yarn build
         env:
           VUE_APP_URL: ${{ secrets.VUE_APP_URL }}
+          VUE_APP_FIREBASE_AUTH_URL: ${{ secrets.VUE_APP_FIREBASE_AUTH_URL }}
+          VUE_APP_FIREBASE_API_KEY: ${{ secrets.VUE_APP_FIREBASE_API_KEY }}
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v2
         env:
