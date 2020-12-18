@@ -16,7 +16,7 @@ export default {
         }
       )
       .catch((error) => {
-        throw new Error(error.message || 'Failed to fetch');
+        throw new Error(error.message || 'Failed to Authenticate');
       });
     console.log(res);
     context.commit('setUser', {
