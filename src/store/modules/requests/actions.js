@@ -9,7 +9,10 @@ export default {
     };
 
     const res = await axios
-      .post(`${process.env.VUE_APP_URL}/${payload.coachId}.json`, newRequest)
+      .post(
+        `${process.env.VUE_APP_URL}/requests/${payload.coachId}.json`,
+        newRequest
+      )
       .catch((error) => {
         throw new Error(error.message || 'Failed to fetch');
       });

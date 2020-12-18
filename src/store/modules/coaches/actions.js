@@ -8,7 +8,7 @@ export default {
       id: context.rootGetters.userId,
     };
     await axios
-      .put(`${process.env.VUE_APP_URL}/${userId}.json`, coachData)
+      .put(`${process.env.VUE_APP_URL}/coaches/${userId}.json`, coachData)
       .catch((error) => {
         throw new Error(error.message || 'Failed to fetch');
       });
@@ -17,7 +17,7 @@ export default {
   async loadCoaches(context) {
     const coaches = [];
     const res = await axios
-      .get(`${process.env.VUE_APP_URL}.json`)
+      .get(`${process.env.VUE_APP_URL}/coaches.json`)
       .catch((error) => {
         throw new Error(error.message || 'Failed to fetch');
       });
