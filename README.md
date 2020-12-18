@@ -8,6 +8,8 @@
   - [Technical Specs](#technical-specs)
     - [Routes](#routes)
   - [Environment](#environment)
+  - [Authentication in SPA](#authentication-in-spa)
+  - [Firebase rules](#firebase-rules)
 
 ## Deployment
 
@@ -47,3 +49,31 @@
 
 - All routes manually append `.json` in application
 - Add URL without `.json` in Environment variable
+
+## Authentication in SPA
+
+- Server contains some public and restricted resources
+- In frontend centric app like firebased app, server doesnt care about these restrictions and must be performed on server side
+- With other servers (Node, Java ), JWT is used for validation
+
+## Firebase rules
+
+```json
+{
+  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+  "rules": {
+    "coach-finder-vue": {
+      "coaches": {
+        ".read": true,
+        ".write": "auth != null"
+      },
+      "requests": {
+        ".write": true,
+        ".read": "auth != null"
+      }
+    }
+    // ".read": true,
+    // ".write": true,
+  }
+}
+```
