@@ -1,11 +1,19 @@
+import axios from 'axios';
+
 export default {
-  contactCoach(context, payload) {
+  async contactCoach(context, payload) {
     const newRequest = {
-      id: new Date().toISOString(),
       coachId: payload.coachId,
       email: payload.email,
       message: payload.message,
     };
+
+    const res = await axios
+      .post(`${process.env.VUE_APP_URL}/${payload.coachId}.json`, newRequest)
+      .catch((error) => {
+        throw new Error(error.message || 'Failed to fetch');
+      });
+    newRequest.id = res.data.name;
     context.commit('addRequest', newRequest);
   },
 };
