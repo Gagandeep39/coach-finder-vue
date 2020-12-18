@@ -42,4 +42,12 @@ export default {
       tokenExpiration: res.data.expiresIn,
     });
   },
+
+  logout(context) {
+    context.commit('setUser', {
+      token: null,
+      userId: null,
+      tokenExpiration: null,
+    });
+  },
 };
