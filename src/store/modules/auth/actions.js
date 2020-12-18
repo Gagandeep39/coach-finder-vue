@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export default {
   async login(context, payload) {
-    console.log(payload);
     const res = await axios
       .post(
         `${process.env.VUE_APP_FIREBASE_SIGN_IN_URL}${process.env.VUE_APP_FIREBASE_API_KEY}`,
@@ -16,11 +15,10 @@ export default {
         console.log(error);
         throw new Error(error.message || 'Failed to Authenticate');
       });
-    console.log(res);
     context.commit('setUser', {
-      token: res.idToken,
-      userId: res.localId,
-      tokenExpiration: res.expiresIn,
+      token: res.data.idToken,
+      userId: res.data.localId,
+      tokenExpiration: res.data.expiresIn,
     });
   },
 
@@ -38,11 +36,10 @@ export default {
         console.log(error);
         throw new Error(error.message || 'Failed to Authenticate');
       });
-    console.log(res);
     context.commit('setUser', {
-      token: res.idToken,
-      userId: res.localId,
-      tokenExpiration: res.expiresIn,
+      token: res.data.idToken,
+      userId: res.data.localId,
+      tokenExpiration: res.data.expiresIn,
     });
   },
 };
