@@ -1,12 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import CoachList from '../views/coaches/CoachList';
-import CoachDetails from '../views/coaches/CoachDetails';
-import CoachRegistration from '../views/coaches/CoachRegistration';
-import ContactCoach from '../views/requests/ContactCoach';
-import RequestRecieved from '../views/requests/RequestRecieved';
-import UserAuth from '../views/auth/UserAuth';
 import NotFound from '../views/NotFound';
 import store from '../store';
+import { defineAsyncComponent } from 'vue';
+
+// Async Components
+// Lazy loading
+const ContactCoach = defineAsyncComponent(() =>
+  import('../views/requests/ContactCoach')
+);
+const RequestRecieved = defineAsyncComponent(() =>
+  import('../views/requests/RequestRecieved')
+);
+const CoachDetails = defineAsyncComponent(() =>
+  import('../views/coaches/CoachDetails')
+);
+const CoachRegistration = defineAsyncComponent(() =>
+  import('../views/coaches/CoachRegistration')
+);
+const UserAuth = defineAsyncComponent(() => import('../views/auth/UserAuth'));
 
 const routes = [
   { path: '/', redirect: '/coaches' },
