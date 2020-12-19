@@ -12,6 +12,7 @@
   - [Firebase rules](#firebase-rules)
   - [Firebase authentication](#firebase-authentication)
   - [Environment Variables to run this app](#environment-variables-to-run-this-app)
+  - [Async Components](#async-components)
 
 ## Deployment
 
@@ -92,4 +93,18 @@ VUE_APP_URL=
 VUE_APP_FIREBASE_SIGN_UP_URL=https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=
 VUE_APP_FIREBASE_SIGN_IN_URL=https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=
 VUE_APP_FIREBASE_API_KEY=
+```
+
+## Async Components
+
+- We can have both async components and routes
+- We need to create arrow function import instead of static import
+- This ensures, import is called only when its required
+
+```js
+import { defineAsyncComponent } from 'vue';
+const CoachList = defineAsyncComponent(() =>
+  import('../views/requests/ContactCoach')
+);
+const routes = [{ path: '/coaches', component: CoachList }];
 ```
